@@ -51,7 +51,8 @@ var ar_sources = [
 	'AR/*.c',
 	'ARICP/*.c',
 	'ARMulti/*.c',
-    'Video/VideoLuma.c',
+    // Exclude videoLuma, because otherwise the build process fails: https://github.com/artoolkitx/jsartoolkit5/issues/78
+    //'Video/videoLuma.c',
     'ARUtil/log.c',
     'ARUtil/file_utils.c',
 
