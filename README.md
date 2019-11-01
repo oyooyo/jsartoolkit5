@@ -65,8 +65,8 @@ See examples/simple_image_wasm.html for details.
   - or, change the `tools/makem.js` file to point to your artoolkit5 clone (line 62, 83, 107, 140)
 
 3. Building
-  1. Make sure `EMSCRIPTEN` env variable is set (e.g. `EMSCRIPTEN=/usr/lib/emsdk_portable/emscripten/master/`)
-  3. Run `npm run build`
+  1. Copy the `ARTOOLKIT5_ROOT/include/AR/config.h.in` file to `ARTOOLKIT5_ROOT/include/AR/config.h` (e.g. `cp emscripten/artoolkit5/include/AR/config.h.in emscripten/artoolkit5/include/AR/config.h`)
+  2. Run `node tools/makem.js`, making sure the `EMSCRIPTEN` env variable is set (for example by simply passing it to the `node tools/makem.js` command line: `EMSCRIPTEN=/usr/lib/emsdk_portable/emscripten/master/ node tools/makem.js`)
   
 During development, you can run ```npm run watch```, it will rebuild the library everytime you change ```./js/``` directory.
 
