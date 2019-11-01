@@ -19,6 +19,7 @@ When writing JavaScript and making changes be aware that the emscripten uglifier
 - `tools/` (build scripts for building ARToolKit.js)
 
 ## WebAssembly
+
 JSARToolKit5 supports WebAssembly. The libary builds two WebAssembly artefacts during the build process. These are ```build/artoolkit_wasm.js``` and ```build/artoolkit_wasm.wasm```. To use those include the artoolkit_wasm.js into your html page and define ```var artoolkit_wasm_url = '<<PATH TO>>/artoolkit_wasm.wasm';``` prior to loading the artoolkit_wasm.js file, like so:
 
 ```js
@@ -40,13 +41,14 @@ See examples/simple_image_wasm.html for details.
 
 1. Clone this repository
 2. Clone ARToolKit5 project to get the latest source files. From within jsartoolkit5 directory do `git submodule update --init`. If you already cloned ARToolKit5 to a different directory you can:
-  - create a link in the `jsartoolkit5/emscripten/` directory that points to ARToolKit5 (`jsartoolkit5/emscripten/artoolkit5`) (Linux and macOS only)
-  - or, set the `ARTOOLKIT5_ROOT` environment variable to point to your ARToolKit5 clone
-  - or, change the `tools/makem.js` file to point to your artoolkit5 clone (line 62, 83, 107, 140)
+    - create a link in the `jsartoolkit5/emscripten/` directory that points to ARToolKit5 (`jsartoolkit5/emscripten/artoolkit5`) (Linux and macOS only)
+    - or, set the `ARTOOLKIT5_ROOT` environment variable to point to your ARToolKit5 clone
+    - or, change the `tools/makem.js` file to point to your artoolkit5 clone (line 62, 83, 107, 140)
 
 ## Build Instructions
 
 ### Build using Docker
+
 1. Install Docker (if you havn't already) [Docker](https://www.docker.com/) -> Get Docker
 3. From inside jsartoolkit5 directory run `docker run -dit --name emscripten -v $(pwd):/src trzeci/emscripten-slim:sdk-tag-1.37.34-64bit bash`
 4. `docker exec emscripten npm run build`
@@ -55,19 +57,19 @@ See examples/simple_image_wasm.html for details.
 ### Build with manual emscripten setup
 
 1. Install build tools
-  1. Install node.js (https://nodejs.org/en/)
-  2. Install python2 (https://www.python.org/downloads/)
-  3. Install emscripten (http://kripken.github.io/emscripten-site/docs/getting_started/downloads.html#download-and-install)
+    1. Install node.js (https://nodejs.org/en/)
+    2. Install python2 (https://www.python.org/downloads/)
+    3. Install emscripten (http://kripken.github.io/emscripten-site/docs/getting_started/downloads.html#download-and-install)
 
 2. Clone ARToolKit5 project to get the latest source files. From within jsartoolkit5 directory do `git submodule update --init`. If you already cloned ARToolKit5 to a different directory you can:
-  - create a link in the `jsartoolkit5/emscripten/` directory that points to ARToolKit5 (`jsartoolkit5/emscripten/artoolkit5`)
-  - or, set the `ARTOOLKIT5_ROOT` environment variable to point to your ARToolKit5 clone
-  - or, change the `tools/makem.js` file to point to your artoolkit5 clone (line 62, 83, 107, 140)
+    - create a link in the `jsartoolkit5/emscripten/` directory that points to ARToolKit5 (`jsartoolkit5/emscripten/artoolkit5`)
+    - or, set the `ARTOOLKIT5_ROOT` environment variable to point to your ARToolKit5 clone
+    - or, change the `tools/makem.js` file to point to your artoolkit5 clone (line 62, 83, 107, 140)
 
 3. Building
-  1. Copy the `ARTOOLKIT5_ROOT/include/AR/config.h.in` file to `ARTOOLKIT5_ROOT/include/AR/config.h` (e.g. `cp emscripten/artoolkit5/include/AR/config.h.in emscripten/artoolkit5/include/AR/config.h`)
-  2. Run `node tools/makem.js`, making sure the `EMSCRIPTEN` env variable is set (for example by simply passing it to the `node tools/makem.js` command line: `EMSCRIPTEN=/usr/lib/emsdk_portable/emscripten/master/ node tools/makem.js`)
-  
+    1. Copy the `ARTOOLKIT5_ROOT/include/AR/config.h.in` file to `ARTOOLKIT5_ROOT/include/AR/config.h` (e.g. `cp emscripten/artoolkit5/include/AR/config.h.in emscripten/artoolkit5/include/AR/config.h`)
+    2. Run `node tools/makem.js`, making sure the `EMSCRIPTEN` env variable is set (for example by simply passing it to the `node tools/makem.js` command line: `EMSCRIPTEN=/usr/lib/emsdk_portable/emscripten/master/ node tools/makem.js`)
+
 During development, you can run ```npm run watch```, it will rebuild the library everytime you change ```./js/``` directory.
 
 4. The built ASM.js files are in `/build`. There's a build with debug symbols in `artoolkit.debug.js` and the optimized build with bundled JS API in `artoolkit.min.js`.
@@ -105,10 +107,10 @@ During development, you can run ```npm run watch```, it will rebuild the library
 </script>
 <script>
 window.ARThreeOnLoad = function () {
-console.log("Three.js helper API loaded");
+  console.log("Three.js helper API loaded");
 };
 if (window.ARController && window.ARController.getUserMediaThreeScene) {
-ARThreeOnLoad();
+  ARThreeOnLoad();
 }
 </script>
 ```
@@ -199,16 +201,16 @@ The basic operation goes like this:
 
 ```
 artoolkit.init('', 'camera_para.dat').onReady(function() {
-artoolkit.setProjectionNearPlane(1);
-artoolkit.setProjectionFarPlane(1000);
-artoolkit.setPatternDetectionMode(artoolkit.CONSTANTS.AR_MATRIX_CODE_DETECTION);
-artoolkit.setMatrixCodeType(artoolkit.CONSTANTS.AR_MATRIX_CODE_4x4);
+  artoolkit.setProjectionNearPlane(1);
+  artoolkit.setProjectionFarPlane(1000);
+  artoolkit.setPatternDetectionMode(artoolkit.CONSTANTS.AR_MATRIX_CODE_DETECTION);
+  artoolkit.setMatrixCodeType(artoolkit.CONSTANTS.AR_MATRIX_CODE_4x4);
 })
 
 artoolkit.init('', 'camera_para.dat').onReady(function() {
-artoolkit.addMarker('../bin/Data/patt.hiro', function(marker) {
-artoolkit.process(v);
-})
+  artoolkit.addMarker('../bin/Data/patt.hiro', function(marker) {
+    artoolkit.process(v);
+  })
 })
 ```
 
