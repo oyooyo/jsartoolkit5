@@ -203,8 +203,8 @@ The basic operation goes like this:
 artoolkit.init('', 'camera_para.dat').onReady(function() {
   artoolkit.setProjectionNearPlane(1);
   artoolkit.setProjectionFarPlane(1000);
-  artoolkit.setPatternDetectionMode(artoolkit.CONSTANTS.AR_MATRIX_CODE_DETECTION);
-  artoolkit.setMatrixCodeType(artoolkit.CONSTANTS.AR_MATRIX_CODE_4x4);
+  artoolkit.setPatternDetectionMode(artoolkit.AR_MATRIX_CODE_DETECTION);
+  artoolkit.setMatrixCodeType(artoolkit.AR_MATRIX_CODE_4x4);
 })
 
 artoolkit.init('', 'camera_para.dat').onReady(function() {
@@ -216,7 +216,7 @@ artoolkit.init('', 'camera_para.dat').onReady(function() {
 
 ## Constants
 
-*prepend all these constants with `Module.` or `artoolkit.CONSTANTS` to access them*
+*prepend all these constants with `Module.` or `artoolkit.` to access them*
 
 ```
 - AR_DEBUG_DISABLE
