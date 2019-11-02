@@ -20,7 +20,13 @@ When writing JavaScript and making changes be aware that the emscripten uglifier
 
 ## WebAssembly
 
-JSARToolKit5 supports WebAssembly. The libary builds two WebAssembly artefacts during the build process. These are ```build/artoolkit_wasm.js``` and ```build/artoolkit_wasm.wasm```. To use those include the artoolkit_wasm.js into your html page and define ```var artoolkit_wasm_url = '<<PATH TO>>/artoolkit_wasm.wasm';``` prior to loading the artoolkit_wasm.js file, like so:
+JSARToolKit5 supports WebAssembly. The libary builds two WebAssembly artefacts during the build process. These are ```build/artoolkit_wasm.js``` and ```build/artoolkit_wasm.wasm```. To use those include the artoolkit_wasm.js into your html page and add a ```data-wasm``` attribute with the .wasm URL to the ```script``` tag:
+
+```js
+<script src="../build/artoolkit_wasm.js" data-wasm="../build/artoolkit_wasm.wasm"></script>
+```
+
+Alternatively (but not recommended), define ```var artoolkit_wasm_url = '<<PATH TO>>/artoolkit_wasm.wasm';``` prior to loading the artoolkit_wasm.js file, like so:
 
 ```js
 <script type='text/javascript'>
