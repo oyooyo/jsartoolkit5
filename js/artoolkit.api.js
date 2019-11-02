@@ -24,11 +24,11 @@
         // should contain the exports object of the instantiated Module, or an empty dictionary object {} if the
         // instantiation is performed asynchronously, or false if instantiation failed.
         Module.instantiateWasm = function(imports, successCallback) {
-            console.log('instantiateWasm: instantiating synchronously');
+            //console.log('instantiateWasm: instantiating synchronously');
             wasm.then(function(wasmBinary) {
-                console.log('wasm download finished, begin instantiating');
+                //console.log('wasm download finished, begin instantiating');
                 var wasmInstantiate = WebAssembly.instantiate(new Uint8Array(wasmBinary), imports).then(function(output) {
-                console.log('wasm instantiation succeeded');
+                //console.log('wasm instantiation succeeded');
                 successCallback(output.instance);
             }).catch(function(e) {
                 console.log('wasm instantiation failed! ' + e);
