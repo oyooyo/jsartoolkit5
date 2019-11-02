@@ -173,6 +173,7 @@ The basic operation goes like this:
 
 - `artoolkit.init(path, camera_param_path)` - load path for artoolkit emscripten files
 - `artoolkit.onReady(callback)` - runs callback when artoolkit has completely downloaded, initalized and ready to run
+- `artoolkit.waitUntilReady()` - return a Promise that resolves when artoolkit has completely downloaded, initalized and ready to run
 - `artoolkit.setup(width, height);` - initalize a buffer size for a canvas of width & height
 - `artoolkit.process(canvas);` - extracts a frame from a canvas and process it
 - `artoolkit.debugSetup()` - enables debugging, adds a threshold image to the dom
