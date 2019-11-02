@@ -1876,6 +1876,7 @@
 
 	window.Module.onRuntimeInitialized = function() {
 		runWhenLoaded();
+		artoolkit.setLogLevel(artoolkit.AR_LOG_LEVEL_WARN);
 		window.dispatchEvent(new Event('artoolkit-loaded'));
 		isReady = true;
 		for (let onReadyCallback of onReadyCallbacks) {
