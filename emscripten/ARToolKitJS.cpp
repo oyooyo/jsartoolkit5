@@ -165,7 +165,7 @@ extern "C" {
 		arc->param = cameraParams[cameraID];
 
 		if (arc->param.xsize != arc->width || arc->param.ysize != arc->height) {
-			ARLOGw("*** Camera Parameter resized from %d, %d. ***\n", arc->param.xsize, arc->param.ysize);
+			ARLOGi("*** Camera Parameter resized from %d, %d. ***\n", arc->param.xsize, arc->param.ysize);
 			arParamChangeSize(&(arc->param), arc->width, arc->height, &(arc->param));
 		}
 
