@@ -24517,7 +24517,7 @@ function setCamera($0, $1) {
   if (!(($3 | 0) == HEAP32[$0 + 212 >> 2] ? ($4 | 0) == HEAP32[$0 + 208 >> 2] : 0)) {
    HEAP32[$2 + 4 >> 2] = $3;
    HEAP32[$2 >> 2] = $4;
-   arLog(2, 7563, $2);
+   arLog(1, 7563, $2);
    arParamChangeSize($1, HEAP32[$0 + 208 >> 2], HEAP32[$0 + 212 >> 2], $1);
   }
   deleteHandle($0);
