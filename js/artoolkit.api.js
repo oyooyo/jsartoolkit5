@@ -1,7 +1,8 @@
 ;(function() {
 	'use strict';
 
-    if(window.artoolkit_wasm_url) {
+		var artoolkit_wasm_url = (document.currentScript.dataset.wasm || window.artoolkit_wasm_url);
+    if(artoolkit_wasm_url) {
         function downloadWasm(url) {
             return new Promise(function(resolve, reject) {
             var wasmXHR = new XMLHttpRequest();
@@ -13,7 +14,7 @@
             });
         }
 
-        var wasm = downloadWasm(window.artoolkit_wasm_url);
+        var wasm = downloadWasm(artoolkit_wasm_url);
 
         // Module.instantiateWasm is a user-implemented callback which the Emscripten runtime calls to perform
         // the WebAssembly instantiation action. The callback function will be called with two parameters, imports
