@@ -1,6 +1,26 @@
 ;(function() {
 	'use strict';
 
+		var isReady = false;
+
+		var onReadyCallbacks = [];
+
+		function onReady(onReadyCallback) {
+			if (isReady) {
+				onReadyCallback();
+			} else {
+				onReadyCallbacks.push(onReadyCallback);
+			}
+		}
+
+		function waitUntilReady() {
+			return new Promise(function(resolve, reject) {
+				onReady(function() {
+					resolve();
+				});
+			});
+		}
+
 		var artoolkit_wasm_url = (document.currentScript.dataset.wasm || window.artoolkit_wasm_url);
     if(artoolkit_wasm_url) {
         function downloadWasm(url) {
@@ -1631,8 +1651,10 @@
 		loadCamera: loadCamera,
 
 		addMarker: addMarker,
-		addMultiMarker: addMultiMarker
+		addMultiMarker: addMultiMarker,
 
+		onReady: onReady,
+		waitUntilReady: waitUntilReady
 	};
 
 	var FUNCTIONS = [
@@ -1855,6 +1877,11 @@
 	window.Module.onRuntimeInitialized = function() {
 		runWhenLoaded();
 		window.dispatchEvent(new Event('artoolkit-loaded'));
+		isReady = true;
+		for (let onReadyCallback of onReadyCallbacks) {
+			onReadyCallback();
+		}
+		onReadyCallbacks = null;
 	}
 	if (window.Module.hasOwnProperty('AR_MATRIX_CODE_DETECTION')) {
 		window.Module.onRuntimeInitialized();
