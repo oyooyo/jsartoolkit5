@@ -1851,18 +1851,12 @@
 	window.ARController = ARController;
 	window.ARCameraParam = ARCameraParam;
 
-	if (window.Module) {
-		window.Module.onRuntimeInitialized = function() {
-            runWhenLoaded();
-            var event = new Event('artoolkit-loaded');
-            window.dispatchEvent(event);
-        }
-	} else {
-        window.Module = {
-            onRuntimeInitialized: function() {
-                runWhenLoaded();
-            }
-        };
-    }
+	window.Module.onRuntimeInitialized = function() {
+		runWhenLoaded();
+		window.dispatchEvent(new Event('artoolkit-loaded'));
+	}
+	if (window.Module.hasOwnProperty('AR_MATRIX_CODE_DETECTION')) {
+		window.Module.onRuntimeInitialized();
+	}
 
 })();
